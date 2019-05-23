@@ -1,6 +1,6 @@
 class Letter {
     constructor(underlying_character) {
-        this.underlying_character = underlying_character.split("");
+        this.underlying_character = underlying_character
         this.IsLetterGuessed = false;
     }
     letterGuess() {
