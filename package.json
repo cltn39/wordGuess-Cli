@@ -1,0 +1,25 @@
+{
+  "name": "wordguess-cli",
+  "version": "1.0.0",
+  "description": "Advanced JavaScript Constructor Word Guess",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cltn39/wordGuess-Cli.git"
+  },
+  "keywords": [
+    "Javascript",
+    "Constructor",
+    "node",
+    "word_guess"
+  ],
+  "author": "Chisoo Song",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cltn39/wordGuess-Cli/issues"
+  },
+  "homepage": "https://github.com/cltn39/wordGuess-Cli#readme"
+}
