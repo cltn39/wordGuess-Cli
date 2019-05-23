@@ -21,5 +21,9 @@
   "bugs": {
     "url": "https://github.com/cltn39/wordGuess-Cli/issues"
   },
-  "homepage": "https://github.com/cltn39/wordGuess-Cli#readme"
+  "homepage": "https://github.com/cltn39/wordGuess-Cli#readme",
+  "dependencies": {
+    "inquirer": "^6.3.1",
+    "prompt": "^1.0.0"
+  }
 }
