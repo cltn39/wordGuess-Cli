@@ -56,13 +56,13 @@ const makeGuess = () => {
     inquirer.prompt([{
             type: "input",
             name: "guessedLetter",
-            message: `\nGuess a letter! \nGuesses Left: ${guesses} \n`
+            message: `${word.update} \nGuess a letter! \nGuesses Left: ${guesses} \n`
         }])
         .then( (data) => {
             let checkCase = data.guessedLetter.toLowerCase();
             word.arr.forEach(Letter => {
                 Letter.updateGuess(checkCase);
-                checker.push(Letter.updateGuess());
+                checker.push(Letter.letterGuess());
             });
             if (guesses > 0 && checker.indexOf("_") !== -1) {
                 guesses--;

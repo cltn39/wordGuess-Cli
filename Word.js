@@ -4,7 +4,7 @@ class Word {
     constructor(word) {
         this.word = word;
         this.arr = [];
-        
+
         this.createWord = () => {
             let wordArr = this.word.split("");
             for (let i = 0; i < wordArr.length; i++) {
@@ -12,9 +12,9 @@ class Word {
                 this.arr.push(newLetter);
             }
         }
-        
+
     }
-    
+
     rtnWord() {
         //A function that returns a string representing the word. This should call the function on each letter object (the first function defined in Letter.js) that displays the character or an underscore and concatenate those together.
         const result = [];
@@ -29,6 +29,13 @@ class Word {
         this.arr.forEach(Letter => {
             Letter.letterGuess(guess);
         });
+    }
+    update() {
+        let printedWord = "";
+        this.arr.forEach(Letter => {
+            printedWord += Letter.letterGuess() + " ";
+        });
+        return printedWord;
     }
 }
 
