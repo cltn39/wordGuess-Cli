@@ -104,7 +104,7 @@ const continuePrompt = () => {
             choices: ["Yes" .green, "No" .red]
         }])
         .then(data => {
-            if (data.continue === "Yes") {
+            if (data.continue === "Yes".green) {
                 start();
             } else {
                 console.log("Thanks for playing!" .rainbow);
