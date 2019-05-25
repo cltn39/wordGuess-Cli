@@ -7,17 +7,17 @@ const inquirer = require('inquirer');
 
 //Prompts the user for each guess and keeps track of the user's remaining guesses
 
-const wordsPool = [
+const wordsArr = [
     'tiger', 'giraffe', 'monkey', 'kangaroo'
 ];
 
 let guesses,
-    pickedWords,
+    pickedArr,
     word,
-    pickedWord = "";
+    pickedWord;
 
-const wordGuess = () => {
-    pickedWords = [];
+const start = () => {
+    pickedArr = []
     console.log("------------------------------------------");
     console.log("This is Word-Guess-Cli demonstration");
     console.log("------------------------------------------");
@@ -25,8 +25,9 @@ const wordGuess = () => {
 }
 
 const demonstrate = () => {
+    pickedWord = "";
     guesses = 10;
-    if (pickedWords.length < wordsPool.length) {
+    if (pickedArr.length < wordsArr.length) {
         pickedWord = getWord();
     } else {
         console.log("You got it right!");
@@ -34,15 +35,20 @@ const demonstrate = () => {
     }
     if (pickedWord) {
         word = new Word(pickedWord);
+        word.createWord();
         makeGuess();
     }
 }
 
 const getWord = () => {
-    let randomPick = Math.floor(Math.random() * wordsPool.length);
-    let randomWord = wordsPool[randomPick];
-    if (pickedWords.indexOf(randomWord) === -1) {
-        pickedWords.push(randomWord);
+    let randomPick = Math.floor(Math.random() * wordsArr.length);
+    let randomWord = wordsArr[randomPick];
+
+    // console.log(randomPick);
+    // console.log(randomWord);
+
+    if (pickedArr.indexOf(randomWord) === -1) {
+        pickedArr.push(randomWord);
         return randomWord;
     } else {
         return getWord();
@@ -51,18 +57,14 @@ const getWord = () => {
 
 const makeGuess = () => {
     let checker = [];
-    inquirer.prompt([
-        {
+    inquirer.prompt([{
             name: "guessedLetter",
-            message: 
-                "\nGuess a letter!" +
-                "\nGuesses Left: " + guesses
-        }
-    ])
+            message: `\nGuess a letter! \nGuesses Left: ${guesses} \n`
+        }])
         .then(data => {
             word.arr.forEach(Letter => {
-                Letter.checkLetter(data.guessedLetter);
-                checker.push(Letter.getCharacter());
+                Letter.updateGuess(data.guessedLetter);
+                checker.push(Letter.updateGuess());
             });
             if (guesses > 0 && checker.indexOf("_") !== -1) {
                 guesses--;
@@ -74,9 +76,26 @@ const makeGuess = () => {
                 }
             } else {
                 console.log("CONGRATULATIONS! YOU GOT THE WORD!");
+                demonstrate();
+            }
+        });
+}
+
+function continuePrompt() {
+    inquirer.prompt([{
+            name: "continue",
+            type: "list",
+            message: "Would you like to play again?",
+            choices: ["Yes", "No"]
+        }])
+        .then(data => {
+            if (data.continue === "Yes") {
+                start();
+            } else {
+                console.log("Thanks for playing!");
             }
         });
 }
 
 
-wordGuess();
+start();

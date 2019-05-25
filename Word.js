@@ -1,16 +1,20 @@
 const Letter = require('./Letter');
 
 class Word {
-    constructor(arrNewLetter) {
-        this.arrNewLetter = arrNewLetter
+    constructor(word) {
+        this.word = word
         this.arr = [];
+        
         this.createWord = () => {
-            for (let i = 0; i < this.arrNewLetter.length; i++) {
-                let newLetter = new Letter(this.arrNewLetter[i]);
+            let wordArr = this.word.split("");
+            for (let i = 0; i < wordArr.length; i++) {
+                let newLetter = new Letter(wordArr[i]);
                 this.arr.push(newLetter);
             }
         }
+        
     }
+    
     rtnWord() {
         //A function that returns a string representing the word. This should call the function on each letter object (the first function defined in Letter.js) that displays the character or an underscore and concatenate those together.
         const result = [];
