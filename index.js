@@ -9,7 +9,7 @@ const colors = require('colors');
 //Prompts the user for each guess and keeps track of the user's remaining guesses
 
 const wordsArr = [
-    'tiger', 'giraffe', 'monkey', 'kangaroo'
+    'tiger', 'giraffe', 'monkey', 'kangaroo', 'hyena', 'armadillo', 'platypus'
 ];
 
 let guesses,
