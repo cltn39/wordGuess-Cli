@@ -11,7 +11,7 @@ hangman style command-line game using constructor functions.
 - [x] Fully functioning hangman game. 
 - [x] Registers both uppercase and lowercase as same input.
 - [x] colorful command lines!.
-- [] filters and reject repeated words/multiple letter input.
+- [ ] filters and reject repeated words/multiple letter input.
 
 ## Node packages used:
 
