@@ -74,12 +74,28 @@ const makeGuess = () => {
                 }
             } else {
                 console.log("CONGRATULATIONS! YOU GOT THE WORD!");
-                demonstrate();
+                toNxtQuestion();
             }
         });
 }
+const toNxtQuestion = () => {
+    inquirer.prompt([{
+        name: "toNxtQuestion",
+        type: "list",
+        message: "Next word?",
+        choices: ["Yes", "No"]
+    }])
+    .then(data => {
+        if (data.toNxtQuestion === "Yes") {
+            console.log("\nHere comes the next question:\n")
+            demonstrate();
+        } else {
+            console.log("Ok! Good Bye!");
+        }
+    });
+}
 
-function continuePrompt() {
+const continuePrompt = () => {
     inquirer.prompt([{
             name: "continue",
             type: "list",
