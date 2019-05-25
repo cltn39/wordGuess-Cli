@@ -1,5 +1,6 @@
 const Word = require('./Word');
 const inquirer = require('inquirer');
+const colors = require('colors');
 
 //index.js: The file containing the logic for the course of the game, which depends on Word.js and:
 
@@ -19,7 +20,7 @@ let guesses,
 const start = () => {
     pickedArr = []
     console.log("------------------------------------------");
-    console.log("This is Word-Guess-Cli demonstration");
+    console.log("This is Word-Guess-Cli demonstration" .rainbow);
     console.log("------------------------------------------");
     demonstrate();
 }
@@ -30,7 +31,7 @@ const demonstrate = () => {
     if (pickedArr.length < wordsArr.length) {6
         pickedWord = getWord();
     } else {
-        console.log("You got it right!");
+        console.log("You got it right!" .green);
         continuePrompt();
     }
     if (pickedWord) {
@@ -67,13 +68,13 @@ const makeGuess = () => {
             if (guesses > 0 && letterCheck.indexOf("_") > -1) {
                 guesses--;
                 if (guesses === 0) {  
-                    console.log("\nYOU RAN OUT OF GUESSES! GAME OVER.\n");
+                    console.log("\nYOU RAN OUT OF GUESSES! GAME OVER.\n" .red);
                     continuePrompt();
                 } else {
                     makeGuess();
                 }
             } else {
-                console.log("\nCONGRATULATIONS! YOU GOT THE WORD!\n");
+                console.log("\nCONGRATULATIONS! YOU GOT THE WORD!\n" .rainbow);
                 toNxtQuestion();
             }
         });
@@ -83,14 +84,14 @@ const toNxtQuestion = () => {
         name: "toNxtQuestion",
         type: "list",
         message: "Next word?",
-        choices: ["Yes", "No"]
+        choices: ["Yes" .green, "No" .red]
     }])
     .then(data => {
-        if (data.toNxtQuestion === "Yes") {
-            console.log("\nHERE COMES THE NEXT WORD:\n")
+        if (data.toNxtQuestion === "Yes" .green) {
+            console.log("\nHERE COMES THE NEXT WORD:\n" .yellow)
             demonstrate();
         } else {
-            console.log("Ok! Good Bye!");
+            console.log("Ok! Good Bye!" .blue);
         }
     });
 }
@@ -100,13 +101,13 @@ const continuePrompt = () => {
             name: "continue",
             type: "list",
             message: "Would you like to play again?",
-            choices: ["Yes", "No"]
+            choices: ["Yes" .green, "No" .red]
         }])
         .then(data => {
             if (data.continue === "Yes") {
                 start();
             } else {
-                console.log("Thanks for playing!");
+                console.log("Thanks for playing!" .rainbow);
             }
         });
 }

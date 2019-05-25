@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/cltn39/wordGuess-Cli#readme",
   "dependencies": {
+    "colors": "^1.3.3",
     "inquirer": "^6.3.1"
   }
 }
