@@ -2,7 +2,7 @@ const Letter = require('./Letter');
 
 class Word {
     constructor(word) {
-        this.word = word
+        this.word = word;
         this.arr = [];
         
         this.createWord = () => {

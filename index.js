@@ -43,10 +43,6 @@ const demonstrate = () => {
 const getWord = () => {
     let randomPick = Math.floor(Math.random() * wordsArr.length);
     let randomWord = wordsArr[randomPick];
-
-    // console.log(randomPick);
-    // console.log(randomWord);
-
     if (pickedArr.indexOf(randomWord) === -1) {
         pickedArr.push(randomWord);
         return randomWord;
@@ -58,17 +54,19 @@ const getWord = () => {
 const makeGuess = () => {
     let checker = [];
     inquirer.prompt([{
+            type: "input",
             name: "guessedLetter",
             message: `\nGuess a letter! \nGuesses Left: ${guesses} \n`
         }])
-        .then(data => {
+        .then( (data) => {
+            let checkCase = data.guessedLetter.toLowerCase();
             word.arr.forEach(Letter => {
-                Letter.updateGuess(data.guessedLetter);
+                Letter.updateGuess(checkCase);
                 checker.push(Letter.updateGuess());
             });
             if (guesses > 0 && checker.indexOf("_") !== -1) {
                 guesses--;
-                if (guesses === 0) {
+                if (guesses === 0) {  
                     console.log("YOU RAN OUT OF GUESSES! GAME OVER.");
                     continuePrompt();
                 } else {

@@ -6,7 +6,7 @@ class Letter {
     letterGuess() {
         //A function that returns the underlying character if the letter has been guessed, or a placeholder (like an underscore) if the letter has not been guessed
         if (!this.IsLetterGuessed) {
-            return '_';
+            return "_";
         } else {
             return this.underlying_character;
         } 
