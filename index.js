@@ -27,7 +27,7 @@ const start = () => {
 const demonstrate = () => {
     pickedWord = "";
     guesses = 10;
-    if (pickedArr.length < wordsArr.length) {
+    if (pickedArr.length < wordsArr.length) {6
         pickedWord = getWord();
     } else {
         console.log("You got it right!");
@@ -43,7 +43,7 @@ const demonstrate = () => {
 const getWord = () => {
     let randomPick = Math.floor(Math.random() * wordsArr.length);
     let randomWord = wordsArr[randomPick];
-    if (pickedArr.indexOf(randomWord) === -1) {
+    if (pickedArr.indexOf(randomWord)) {
         pickedArr.push(randomWord);
         return randomWord;
     } else {
@@ -52,7 +52,7 @@ const getWord = () => {
 }
 
 const makeGuess = () => {
-    let checker = [];
+    let letterCheck = [];
     inquirer.prompt([{
             type: "input",
             name: "guessedLetter",
@@ -62,18 +62,18 @@ const makeGuess = () => {
             let checkCase = data.guessedLetter.toLowerCase();
             word.arr.forEach(Letter => {
                 Letter.updateGuess(checkCase);
-                checker.push(Letter.letterGuess());
+                letterCheck.push(Letter.letterGuess());
             });
-            if (guesses > 0 && checker.indexOf("_") !== -1) {
+            if (guesses > 0 && letterCheck.indexOf("_") > -1) {
                 guesses--;
                 if (guesses === 0) {  
-                    console.log("YOU RAN OUT OF GUESSES! GAME OVER.");
+                    console.log("\nYOU RAN OUT OF GUESSES! GAME OVER.\n");
                     continuePrompt();
                 } else {
                     makeGuess();
                 }
             } else {
-                console.log("CONGRATULATIONS! YOU GOT THE WORD!");
+                console.log("\nCONGRATULATIONS! YOU GOT THE WORD!\n");
                 toNxtQuestion();
             }
         });
@@ -87,7 +87,7 @@ const toNxtQuestion = () => {
     }])
     .then(data => {
         if (data.toNxtQuestion === "Yes") {
-            console.log("\nHere comes the next question:\n")
+            console.log("\nHERE COMES THE NEXT WORD:\n")
             demonstrate();
         } else {
             console.log("Ok! Good Bye!");
