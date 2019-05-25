@@ -56,7 +56,7 @@ const makeGuess = () => {
     inquirer.prompt([{
             type: "input",
             name: "guessedLetter",
-            message: `${word.update} \nGuess a letter! \nGuesses Left: ${guesses} \n`
+            message: `${word.update()} \nGuess a letter! \nGuesses Left: ${guesses} \n`
         }])
         .then( (data) => {
             let checkCase = data.guessedLetter.toLowerCase();
