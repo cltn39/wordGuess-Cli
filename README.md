@@ -26,9 +26,9 @@ hangman style command-line game using constructor functions.
 3. Enjoy the app!
 
 ## Demo:
-### Win condition:
+### Win condition: win a game by gussing all the letters
 ![win game](assets/images/wordGuessREADME.gif)
-### Unwanted input and loss:
+### Unwanted input and loss: wrong input and wrong guesses will take out a guess, once guess reaches 0, you lose.
 ![lose game](assets/images/nomoreguessREADME.gif)
-### Application continuity:
+### Application continuity: Upon winning the game, you recieve a prompt for asking to continue or end.
 ![continue game](assets/images/continuegameREADME.gif)
